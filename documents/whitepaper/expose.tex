@@ -1,0 +1,56 @@
+%laden der Präambel mit Latexbefehlen/-klassen
+\include{expose.preambel}
+
+\subject{Design Document}
+\title{Hand-Drawn Animals Recognition Using Voice Interface}
+\author{Sven Ludwig}
+\author{Hoan Vu}
+\affil{University of Applied Sciences Bonn-Rhein-Sieg}
+\affil{Visual Computing and Games Technology}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Children have a natural love for artistic expression, and among their favorite subjects are animals. What if we could take this creativity a step further and allow a child to create stories around their own hand-drawing favorite animals by interacting with a computer to shape their artwork? This project helps to spark their creativity with the capabilities of computer vision through voice interface technology. The primary aim of this project is to develop a tool that recognizes hand-drawn animal images, engages in a friendly dialogue with children, and encourages interactive learning in a fun and educational way.
+
+\section{Objectives}
+The main objectives of this project are as follows:
+
+\begin{itemize}
+  \item To create a tool that takes as input a photo of a hand-drawn animal image.
+  \item To implement an animal recognition system that classifies the drawings into specific animal classes, e.g. fox, owl, deer, cat, crocodile, and spider.
+  \item To enable a child-friendly interaction between the tool and the child, adhering to the principles of Advanced UI design.
+  \item To log and record instances where children present drawings of animals not covered by the initial set of recognized classes.
+  \item To provide a warm welcome message when the tool is initiated and a friendly farewell message when the interaction session concludes.
+\end{itemize}
+
+
+\section{Methodology}
+In order to achieve the outlined objectives, the following methodology will be employed. Note that this project won't cover the image classification part:
+\begin{itemize}
+  \item Integration of the voice interface will necessitate software capable of speech recognition and generation, e.g. using technologies like Google Speech Recognition and Text-to-Speech (TTS) APIs.
+  \item Potentially, the development of the interactive dialogue with children will involve small-scale natural language processing (NLP) techniques and user interface design principles to create a friendly and engaging experience.
+\end{itemize}
+\subsection{Hardware}
+\begin{itemize}
+  \item Camera or image input devices (webcam, smartphone camera) for capturing and uploading hand-drawn animal images.
+  \item Microphone and speaker system for the voice interface, ensuring clear and accurate communication with the child.
+\end{itemize}
+
+\section{Timeline}
+\begin{description}
+\item[14.11.] Project setup and architecture overview
+\item[28.11.] Dataset curation and initial preprocessing
+\item[05.12.] Basic recognition of drawn animals
+\item[19.12.] Text-to-Speech asking the first question of the dialogue
+\item[09.01.] Dialogue version 1
+\item[16.01.] Dialogue version 2 and technical improvements
+\item[23.01.] MVP done.
+\end{description}
+%Literatur
+%\printbibliography
+
+\end{document}

@@ -1,0 +1,49 @@
+\documentclass[oneside, paper=A4, DIV=15, ngerman]{scrartcl}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+
+% Schriftart
+%\usepackage{arev}
+%\usepackage[T1]{fontenc}
+
+%Schriftart
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\usepackage[T1]{fontenc}
+
+% Mathe, Symbole, Einheitendarstellung, Chemie
+\usepackage{siunitx}  
+
+% Typographie
+\usepackage[auto]{microtype}
+
+% Autorenangaben
+\usepackage[german]{authblk}
+\renewcommand\Authand{, }
+\renewcommand\Authands{, }
+
+%Paket zur Erstellung von Gantt-Charts
+\usepackage{pgfgantt}
+
+% Darstellung der Literaturangaben
+\usepackage[
+backend=biber,
+style=iso-numeric,
+citestyle=numeric-comp,
+maxbibnames=2,
+firstinits=true
+]{biblatex}
+
+% Speicherort der Literaturangaben (*.bib Datei)
+\bibliography{literatur/refs}
+
+% pdf-Einatellungen
+% Angaben ggf. aktualisieren!
+\usepackage[
+pdftitle={},
+pdfsubject={},
+pdfauthor={},
+pdfkeywords={},  
+% Links nicht einrahmen
+hidelinks
+]{hyperref}
