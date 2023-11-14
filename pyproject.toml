@@ -1,0 +1,123 @@
+[tool.poetry]
+name = "drawing2story-ui"
+version = "0.1.0"
+description = "This project is a user interface to the tool drawind2story."
+homepage = "https://github.com/aisven/drawing2story-ui"
+authors = ["fooo, aisven"]
+readme = "README.md"
+packages = [
+    { include = "drawing2story_ui" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+# note that we are using a more classic approach of having one group for dev dependencies
+# including dependencies for dev concerns like code formatting and linting
+# but also including pytest and further required libraries during test execution
+# thus we do not have a separate group called tool.poetry.group.test.dependencies
+# since we do not manage dev and test dependencies separately
+# but we could easily change that if desired
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
+pytest-cov = "^4.1.0"
+pytest-runner = "^6.0.0"
+pytest-sugar = "^0.9.7"
+black = "^23.9.1"
+flake8 = "^6.1.0"
+#mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core>=1.6.1"]
+build-backend = "poetry.core.masonry.api"
+
+# note that to understand the reason behind double square brackets in poetry TOML configuration files like the one here
+# as for example in [[tool.poetry.source]] or likewise in [[tool.mypy.overrides]]
+# one needs to read about the notion of arrays of tables in TOML itself
+# see https://toml.io/en/v1.0.0#array-of-tables
+
+#[[tool.poetry.source]]
+#name = "gitlab-pull"
+#url = "https://github.com/aisven/drawing2story-ui"
+#secondary = true
+
+# note that mypy is currently out-commented
+# but we could start using it later
+
+#[tool.mypy]
+#plugins = ["pydantic.mypy"]
+#allow_redefinition = false
+#check_untyped_defs = true
+#disallow_untyped_decorators = true
+#disallow_any_explicit = true
+#disallow_any_generics = true
+#disallow_untyped_calls = true
+#ignore_errors = false
+#ignore_missing_imports = true
+#implicit_reexport = false
+#local_partial_types = true
+#strict_optional = true
+#strict_equality = true
+#no_implicit_optional = true
+#warn_unused_ignores = true
+#warn_redundant_casts = true
+#warn_unused_configs = true
+#warn_unreachable = true
+#warn_no_return = true
+
+[tool.black]
+line-length = 120
+
+# note that flake8 is not yet supported in pyproject.toml configuration files by poetry natively
+# and there exists a plugin https://pypi.org/project/Flake8-pyproject/
+# however in this project we decided to stick with the .flake8 file for now
+
+#[tool.flake8]
+
+[tool.coverage.run]
+source = ["drawing2story_ui"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+#[[tool.mypy.overrides]]
+#module = "asyncache.*"
+#ignore_missing_imports = true
+
+#[[tool.mypy.overrides]]
+#module = "asyncpg.*"
+#ignore_missing_imports = true
+
+#[[tool.mypy.overrides]]
+#module = "cachetools.*"
+#ignore_missing_imports = true
+
+#[[tool.mypy.overrides]]
+#module = "cython.*"
+#ignore_missing_imports = true
+
+#[[tool.mypy.overrides]]
+#module = "pydantic.*"
+#ignore_missing_imports = true
+
+#[[tool.mypy.overrides]]
+#module = "dateutil.*"
+#ignore_missing_imports = true
+
+# to understand why the following section regarding pytest configuration works
+# well it stems from the effort of the community to make systems like poetry support pytest configuration
+# so that no pytest.ini is needed
+# see https://docs.pytest.org/en/stable/reference/customize.html#pyproject-toml
+
+[tool.pytest.ini_options]
+minversion = "7.4"
+addopts = "--verbose -vv"
+testpaths = [
+    "tests",
+#    "integration",
+]
+log_cli='True'
+#asyncio_mode = "strict"
