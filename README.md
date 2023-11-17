@@ -93,7 +93,26 @@ shell, poetry will use that. To investigate which python poetry is currently usi
 
 Note that if you did not bring a python environment, poetry can just create one using its own convention.
 
-### Install dependencies
+### Define dependencies
+
+Usually, developers have already defined the dependencies and you can just skip this section.
+However, here follows a description how to add, change, remove dependencies.
+
+To alter the dependencies of the project if needed, you would perform three steps.
+
+First, you would edit the sections `tool.poetry.dependencies` and `tool.poetry.group.dev.dependencies` in
+`pyproject.toml` as applicable.
+
+Second, you would run the following command.
+
+`poetry upadte`
+
+If it fails, you usually would fix the problems by further editing `pyproject.toml` and running the command again.
+The command performs dependency resolutions in a detailed, exact, standardized way and updates the `poetry.lock` file.
+
+Lastly, if all is fine, you would commit and push the files `pyproject.toml` and `poetry.lock` to the git repository.
+
+### Install defined dependencies
 
 To install the dependencies of the project, including the dev dependencies, without installing the project itself,
 use the following command. Note that the `--no-root` tells poetry not to install the project itself.
