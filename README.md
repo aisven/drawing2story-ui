@@ -35,6 +35,7 @@ poetry run flake8 tests
 ```
 
 For more guidance and slight variations of the commands read the sections below.
+Also, the sections below describe how to define dependencies and how to install dependencies.
 
 ## The python environment compatibility
 
