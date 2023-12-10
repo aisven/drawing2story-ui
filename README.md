@@ -106,7 +106,7 @@ First, you would edit the sections `tool.poetry.dependencies` and `tool.poetry.g
 
 Second, you would run the following command.
 
-`poetry upadte`
+`poetry update`
 
 If it fails, you usually would fix the problems by further editing `pyproject.toml` and running the command again.
 The command performs dependency resolutions in a detailed, exact, standardized way and updates the `poetry.lock` file.
