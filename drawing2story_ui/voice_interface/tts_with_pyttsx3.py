@@ -6,7 +6,7 @@ def say_text_with_pyttsx3(text: str, driver_name: str, debug: bool):
 
     # pyttsx3 is these days also known as py3-tts
     # https://pypi.org/project/py3-tts/
-    # https: // py3 - tts.vigneshrao.com / support /
+    # https://py3-tts.vigneshrao.com/support/
 
     # pyttsx3 delegates to speech synthesis engines of the operating systems
     # SAPI5 on Windows XP and Windows Vista and Windows 8,8.1 , 10
