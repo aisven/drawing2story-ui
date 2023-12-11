@@ -17,5 +17,4 @@ def test_say_text_with_pyttsx3_on_macos():
 
 
 def test_try_all_available_voices_with_pyttsx3_on_macos():
-    text = "hello"
     try_all_available_voices_with_pyttsx3(driver_name=global_driver_name, debug=True)
