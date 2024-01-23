@@ -22,16 +22,21 @@ packages = [
 #jupyter-client = "^8.6"
 #jupyter-core = "^5.5"
 # numpy scipy scikit-learn are just here for fun and we can remove them if not needed
-numpy = "^1.26"
+# numpy = "^1.26"
 python = "~3.11"
-scikit-learn = "^1.3"
-scipy = "^1.11"
+# scikit-learn = "^1.3"
+# scipy = "^1.11"
 SpeechRecognition="^3.10"
+PyAudio="^0.2.14"
+Flask="^3.0.0"
+pillow="^10.0.0"
+#textblob="^0.17.1"
+vaderSentiment="^3.3.2"
 # PyTorch is here in case we need it
 # however for integrating existing text-to-speech and speech-to-text models
 # we probably will add other dependencies
-torch = "^2.1"
-torchaudio = "^2.1"
+# torch = "^2.1"
+# torchaudio = "^2.1"
 
 # note that we are using a more classic approach of having one group for dev dependencies
 # including dependencies for dev concerns like code formatting and linting

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} <h1> Upload your animal drawing! </h1>{% endblock %}
+
+{% block content %}
+<form id="uploadForm" method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+    <label for="drawingImage">Choose a drawing:</label>
+    <input type="file" id="drawingImage" name="drawingImage" accept="image/*">
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+{% include "buttons.html" %}
+{% endblock %}

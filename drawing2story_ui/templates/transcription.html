@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %} <h1> Drawing2Story </h1>{% endblock %}
+
+{% block content %}
+{% if label=="positive" %}
+<audio id="StoryIntroAudio" preload="auto" onended="generateStory()" autoplay>
+    <source src="{{ url_for('static', filename='media/Story_Begin_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+<h3>Our animal friends are now gearing up for some delightful adventures...</h3>
+<p id="typingEffect"></p>
+<script>
+    const textToType = "{{ text }}";
+
+    function typeText() {
+        const typingElement = document.getElementById('typingEffect');
+        let charIndex = 0;
+
+        function type() {
+            typingElement.textContent += textToType[charIndex];
+            charIndex++;
+
+            if (charIndex < textToType.length) {
+                setTimeout(type, 50); // Adjust the timeout for typing speed
+            }
+        }
+
+        type();
+    }
+
+    // Call the typeText function when the audio ends
+    function generateStory() {
+        typeText();
+    }
+</script>
+{% elif label=="negative" %}
+<h3>My prediction was wrong...</h3>
+<audio id="NegativeAudio" preload="auto" autoplay>
+    <source src="{{ url_for('static', filename='media/Sorry_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+<p> {{ text }} </p>
+<button onclick="goBack()">Try again</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% else %}
+<h3>Out of context answer or unstable microphone connection...</h3>
+<audio id="RetryAudio" preload="auto" autoplay>
+    <source src="{{ url_for('static', filename='media/Confusion_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+<p> {{ text }} </p>
+<button onclick="goBack()">Try again</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endif %}
+{% include "buttons.html" %}
+{% endblock %}
