@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} <h1> Welcome to Drawing2Story! </h1>{% endblock %}
+
+{% block content %}
+<audio id="welcomeAudio" preload="auto" autoplay>
+    <source src="{{ url_for('static', filename='media/Intro_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+
+<script>
+    document.getElementById('welcomeAudio').addEventListener('ended', function () {
+        event.preventDefault(); // Prevent the default form submission behavior
+        window.location.href = "{{ url_for('upload') }}";
+    });
+</script>
+{% endblock %}

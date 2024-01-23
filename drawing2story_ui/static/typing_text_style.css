@@ -1,0 +1,8 @@
+/* Style to make it look like typing */
+#typingEffect {
+      font-size: 20px;
+      font-family: 'Arial', sans-serif;
+      border-right: 2px solid #000; /* To simulate the cursor */
+      white-space: nowrap; /* To keep the text in one line */
+      overflow: hidden; /* Hide overflowed characters */
+    }

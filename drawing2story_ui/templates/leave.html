@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %} <h1> Farewell from Drawing2Story! </h1>{% endblock %}
+
+{% block content %}
+<audio id="farewellAudio" preload="auto" autoplay>
+    <source src="{{ url_for('static', filename='media/Farewell_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+{% endblock %}

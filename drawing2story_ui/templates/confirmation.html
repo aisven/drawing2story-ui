@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} <h1> Drawing2Story </h1>{% endblock %}
+
+{% block content %}
+{% if drawing_image %}
+<p>Uploaded Drawing:</p>
+<img src="data:image/png;base64,{{ drawing_image }}" alt="Uploaded Drawing">
+{% else %}
+<p>No drawing image uploaded.</p>
+{% endif %}
+
+<audio id="ConfirmationAudio" preload="auto" onended="playSecondAudio()" autoplay>
+    <source src="{{ url_for('static', filename='media/Animal_Found_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+<audio id="Confirmation2Audio" preload="auto">
+    <source src="{{ url_for('static', filename='media/Is_that_correct_Charlotte.mp3') }}" type="audio/mp3">
+</audio>
+<p id="recordingStatus">I found {{ n_animals }} {{ animal_class }}s in the drawing. Is that correct?</p>
+
+<form id="transcribeForm" method="POST" action="/stt">
+    <input type="hidden" name="n_animals" value="{{ n_animals }}">
+    <input type="hidden" name="animal_class" value="{{ animal_class }}">
+    <button type="submit">Answer</button>
+</form>
+
+<script>
+    // Add JavaScript to show recording status when the button is clicked
+    document.getElementById('transcribeForm').addEventListener('submit', function () {
+        document.getElementById('recordingStatus').innerText = 'Recording started for 5 seconds';
+    });
+
+    function playSecondAudio() {
+        document.getElementById("Confirmation2Audio").play();
+    }
+</script>
+{% include "buttons.html" %}
+{% endblock %}

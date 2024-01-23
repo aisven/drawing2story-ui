@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %} <h1> Drawing2Story UI </h1>{% endblock %}
+
+{% block content %}
+<form id="startForm" method="POST" action="{{ url_for('welcome') }}">
+    <button type="submit">Start</button>
+</form>
+{% endblock %}

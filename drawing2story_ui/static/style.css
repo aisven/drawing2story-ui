@@ -1,0 +1,53 @@
+/* styles.css */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 100% of the viewport height */
+    margin: 0;
+    background-color: #ffffff; /* Set default background color to white */
+    color: #000000; /* Set default text color to black */
+}
+
+.dark-mode {
+    background-color: #121212; /* Set dark mode background color */
+    color: #ffffff; /* Set dark mode text color to white */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+form {
+    text-align: center;
+}
+
+/* styles.css */
+
+button {
+    display: inline-block;
+    width: 80px; /* Set the width to make it a circle */
+    height: 80px; /* Set the height to make it a circle */
+    line-height: 40px; /* Vertical alignment of the text */
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #000000; /* Set to black */
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center; /* Center the text horizontally */
+    padding: 0; /* Remove padding to keep the button compact */
+}
+
+.button-container {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
