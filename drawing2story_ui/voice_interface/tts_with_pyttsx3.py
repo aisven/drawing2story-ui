@@ -20,6 +20,42 @@ def say_text_with_pyttsx3(text: str, driver_name: str, debug: bool):
     engine.runAndWait()
 
 
+def try_anna_with_pyttsx3(driver_name: str, debug: bool):
+    logger = logging.getLogger("ourlog")
+    logger.setLevel(logging.INFO)
+
+    engine = pyttsx3.init(driverName=driver_name, debug=debug)
+
+    # first let's reduce the rate
+    rate = engine.getProperty('rate')
+    logger.info(f"rate={rate}")
+    new_rate = rate * 0.8
+    logger.info(f"new_rate={new_rate}")
+    engine.setProperty('rate', new_rate)
+
+    # second let's reduce the volume
+    volume = engine.getProperty('volume')
+    logger.info(f"volume={volume}")
+    new_volume = volume * 0.9
+    logger.info(f"new_volume={new_volume}")
+    engine.setProperty('volume', new_volume)
+
+    voices = engine.getProperty('voices')
+    done = False
+    for voice in voices:
+        if voice.id == "com.apple.voice.compact.de-DE.Anna":
+            logger.info(f"-----")
+            logger.info(f"voice={voice}")
+            engine.setProperty('voice', voice.id)
+            engine.say('Hallo! Ich bin Dein Computer. Wie geht es Dir? Ich hoffe, Du hast einen schönen Tag? Grüße gehen raus an den Professor und alle Kursteilnehmer!')
+            #engine.save_to_file('Hallo! Ich bin Dein Computer. Wie geht es Dir? Ich hoffe, Du hast einen schönen Tag? Grüße gehen raus an den Professor und alle Kursteilnehmer!', '/Users/sven/gh/drawing2story-ui/Anna_Hallo_Kurs.mp3')
+            engine.runAndWait()
+            done = True
+            break
+        if done:
+            break
+
+
 def try_all_available_voices_with_pyttsx3(driver_name: str, debug: bool):
     logger = logging.getLogger("ourlog")
     logger.setLevel(logging.INFO)
