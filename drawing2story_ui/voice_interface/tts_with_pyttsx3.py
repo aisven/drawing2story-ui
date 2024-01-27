@@ -1,7 +1,6 @@
 import pyttsx3
 import logging
 
-
 def say_text_with_pyttsx3(text: str, driver_name: str, debug: bool):
 
     # pyttsx3 is these days also known as py3-tts
@@ -43,17 +42,18 @@ def try_anna_with_pyttsx3(driver_name: str, debug: bool):
     voices = engine.getProperty('voices')
     done = False
     for voice in voices:
-        if voice.id == "com.apple.voice.compact.de-DE.Anna":
+        if done:
+            break
+        elif voice.id == "com.apple.voice.compact.de-DE.Anna":
             logger.info(f"-----")
             logger.info(f"voice={voice}")
             engine.setProperty('voice', voice.id)
-            engine.say('Hallo! Ich bin Dein Computer. Wie geht es Dir? Ich hoffe, Du hast einen schönen Tag? Grüße gehen raus an den Professor und alle Kursteilnehmer!')
-            #engine.save_to_file('Hallo! Ich bin Dein Computer. Wie geht es Dir? Ich hoffe, Du hast einen schönen Tag? Grüße gehen raus an den Professor und alle Kursteilnehmer!', '/Users/sven/gh/drawing2story-ui/Anna_Hallo_Kurs.mp3')
+            text = 'Schau mal! Da ist eine Eule!'
+            engine.say(text)
+            #engine.save_to_file(text, 'anna_ruft.mp3')
             engine.runAndWait()
             done = True
-            break
-        if done:
-            break
+
 
 
 def try_all_available_voices_with_pyttsx3(driver_name: str, debug: bool):
