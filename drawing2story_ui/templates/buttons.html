@@ -1,9 +1,13 @@
-<div style="position: fixed; left: 3%; top: 15%; transform: translateY(-50%);">
+<div style="position: fixed; left: 3%; top: 30%; transform: translateY(-50%);">
     <form id="homeForm" method="GET" action="{{ url_for('start') }}">
-        <button type="submit" style="border-radius: 0;">Home</button>
+        <button type="submit" style="border-radius: 10px;">Home</button>
+    </form>
+    <br>
+    <form id="uploadForm" method="GET" action="{{ url_for('upload') }}">
+        <button type="submit" style="border-radius: 10px;">Upload</button>
     </form>
     <br>
     <form id="endForm" method="GET" action="{{ url_for('leave') }}">
-        <button type="submit" style="border-radius: 0;">Leave</button>
+        <button type="submit" style="border-radius: 10px;">Leave</button>
     </form>
 </div>

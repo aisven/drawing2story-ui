@@ -7,6 +7,9 @@
 <audio id="StoryIntroAudio" preload="auto" onended="generateStory()" autoplay>
     <source src="{{ url_for('static', filename='media/Story_Begin_Charlotte.mp3') }}" type="audio/mp3">
 </audio>
+<audio id="StoryAudio" preload="auto">
+    <source src="{{ url_for('static', filename='media/Story.mp3') }}" type="audio/mp3">
+</audio>
 <h3>Our animal friends are now gearing up for some delightful adventures...</h3>
 <p id="typingEffect"></p>
 <script>
@@ -21,7 +24,7 @@
             charIndex++;
 
             if (charIndex < textToType.length) {
-                setTimeout(type, 50); // Adjust the timeout for typing speed
+                setTimeout(type, 70); // Adjust the timeout for typing speed
             }
         }
 
@@ -30,6 +33,11 @@
 
     // Call the typeText function when the audio ends
     function generateStory() {
+        // play the an audio file
+        // Get the audio element
+        var storyAudio = document.getElementById('StoryAudio');
+        // Play the audio
+        storyAudio.play();
         typeText();
     }
 </script>
