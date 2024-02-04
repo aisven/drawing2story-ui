@@ -17,7 +17,7 @@ def welcome():
     return render_template("welcome.html")
 
 
-@app.route("/leave", methods=["POST", "GET"])
+@app.route("/leave", methods=["GET"])
 def leave():
     return render_template("leave.html")
 

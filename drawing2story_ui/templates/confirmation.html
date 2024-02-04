@@ -3,20 +3,35 @@
 {% block title %} <h1> Drawing2Story </h1>{% endblock %}
 
 {% block content %}
-{% if drawing_image %}
-<p>Uploaded Drawing:</p>
-<img src="data:image/png;base64,{{ drawing_image }}" alt="Uploaded Drawing">
-{% else %}
-<p>No drawing image uploaded.</p>
-{% endif %}
 
 <audio id="ConfirmationAudio" preload="auto" onended="playSecondAudio()" autoplay>
-    <source src="{{ url_for('static', filename='media/Animal_Found_Charlotte.mp3') }}" type="audio/mp3">
+    <source src="{{ url_for('static', filename='media/3_elephants.mp3') }}" type="audio/mp3">
 </audio>
-<audio id="Confirmation2Audio" preload="auto">
+<!--<audio id="Confirmation2Audio" preload="auto">
     <source src="{{ url_for('static', filename='media/Is_that_correct_Charlotte.mp3') }}" type="audio/mp3">
-</audio>
-<p id="recordingStatus">I found {{ n_animals }} {{ animal_class }}s in the drawing. Is that correct?</p>
+</audio>-->
+<p>I found {{ n_animals }} {{ animal_class }}s in the drawing. Is that correct?</p>
+
+<div id="drawingContainer">
+    {% if drawing_image %}
+    <img src="data:image/png;base64,{{ drawing_image }}" alt="Uploaded Drawing">
+    {% else %}
+    <p>No drawing image uploaded.</p>
+    {% endif %}
+</div>
+<br>
+
+<p id="recordingStatus"></p>
+
+<div id="countdown" style="display: none;">
+    <span id="countdown-text">5</span>
+</div>
+<div id="progress-circle" style="display: none;">
+    <div class="progress-bar"></div>
+</div>
+<br>
+<br>
+
 
 <form id="transcribeForm" method="POST" action="/stt">
     <input type="hidden" name="n_animals" value="{{ n_animals }}">
@@ -24,15 +39,31 @@
     <button type="submit">Answer</button>
 </form>
 
+
 <script>
     // Add JavaScript to show recording status when the button is clicked
     document.getElementById('transcribeForm').addEventListener('submit', function () {
-        document.getElementById('recordingStatus').innerText = 'Recording started for 5 seconds';
+        document.getElementById('recordingStatus').innerText = 'Recording...';
+        document.getElementById('countdown').style.display = 'block';
+        // document.getElementById('progress-circle').style.display = 'block';
+
+        var countdown = 5;
+        var interval = setInterval(function () {
+            countdown--;
+            document.getElementById('countdown-text').innerText = countdown;
+            //document.querySelector('.progress-bar').style.width = (5 - countdown) * 20 + '%'; // Adjust width calculation for progress bar
+
+            if (countdown === 0) {
+                clearInterval(interval);
+                // Submit the form or start actual recording here
+            }
+        }, 1000);
     });
 
     function playSecondAudio() {
         document.getElementById("Confirmation2Audio").play();
     }
+
 </script>
 {% include "buttons.html" %}
 {% endblock %}
