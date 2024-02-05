@@ -1,8 +1,8 @@
 import pyttsx3
 import logging
 
-def say_text_with_pyttsx3(text: str, driver_name: str, debug: bool):
 
+def say_text_with_pyttsx3(text: str, driver_name: str, debug: bool):
     # pyttsx3 is these days also known as py3-tts
     # https://pypi.org/project/py3-tts/
     # https://py3-tts.vigneshrao.com/support/
@@ -26,34 +26,33 @@ def try_anna_with_pyttsx3(driver_name: str, debug: bool):
     engine = pyttsx3.init(driverName=driver_name, debug=debug)
 
     # first let's reduce the rate
-    rate = engine.getProperty('rate')
+    rate = engine.getProperty("rate")
     logger.info(f"rate={rate}")
     new_rate = rate * 0.8
     logger.info(f"new_rate={new_rate}")
-    engine.setProperty('rate', new_rate)
+    engine.setProperty("rate", new_rate)
 
     # second let's reduce the volume
-    volume = engine.getProperty('volume')
+    volume = engine.getProperty("volume")
     logger.info(f"volume={volume}")
     new_volume = volume * 0.9
     logger.info(f"new_volume={new_volume}")
-    engine.setProperty('volume', new_volume)
+    engine.setProperty("volume", new_volume)
 
-    voices = engine.getProperty('voices')
+    voices = engine.getProperty("voices")
     done = False
     for voice in voices:
         if done:
             break
         elif voice.id == "com.apple.voice.compact.de-DE.Anna":
-            logger.info(f"-----")
+            logger.info("-----")
             logger.info(f"voice={voice}")
-            engine.setProperty('voice', voice.id)
-            text = 'Schau mal! Da ist eine Eule!'
+            engine.setProperty("voice", voice.id)
+            text = "Schau mal! Da ist eine Eule!"
             engine.say(text)
-            #engine.save_to_file(text, 'anna_ruft.mp3')
+            # engine.save_to_file(text, 'anna_ruft.mp3')
             engine.runAndWait()
             done = True
-
 
 
 def try_all_available_voices_with_pyttsx3(driver_name: str, debug: bool):
@@ -63,23 +62,23 @@ def try_all_available_voices_with_pyttsx3(driver_name: str, debug: bool):
     engine = pyttsx3.init(driverName=driver_name, debug=debug)
 
     # first let's reduce the rate
-    rate = engine.getProperty('rate')
+    rate = engine.getProperty("rate")
     logger.info(f"rate={rate}")
     new_rate = rate * 0.8
     logger.info(f"new_rate={new_rate}")
-    engine.setProperty('rate', new_rate)
+    engine.setProperty("rate", new_rate)
 
     # second let's reduce the volume
-    volume = engine.getProperty('volume')
+    volume = engine.getProperty("volume")
     logger.info(f"volume={volume}")
     new_volume = volume * 0.9
     logger.info(f"new_volume={new_volume}")
-    engine.setProperty('volume', new_volume)
+    engine.setProperty("volume", new_volume)
 
-    voices = engine.getProperty('voices')
+    voices = engine.getProperty("voices")
     for voice in voices:
-        logger.info(f"-----")
+        logger.info("-----")
         logger.info(f"voice={voice}")
-        engine.setProperty('voice', voice.id)
-        engine.say('Hello. I am your computer. Have a nice day.')
+        engine.setProperty("voice", voice.id)
+        engine.say("Hello. I am your computer. Have a nice day.")
         engine.runAndWait()
