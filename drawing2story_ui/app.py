@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request, flash
-from voice_interface.speech_to_text import speech_to_text
 import base64
 import utils
+
+from flask import Flask, render_template, request, flash
+
+from voice_interface.speech_to_text import speech_to_text
+from voice_interface.sentiment_analysis_with_heuristic import SentimentEnum
+from voice_interface.sentiment_analysis_with_heuristic import analyze_sentiment_with_heuristic
 
 app = Flask(__name__)
 app.secret_key = "SECRET_KEY_3643"
@@ -57,16 +61,18 @@ def transcribe():
             text = "I'm having trouble understanding your response."
             return render_template("transcription.html", text=text, label="neutral")
         # sentiment analysis
-        sentiment, label = utils.sentiment_analysis(text)
+        score, score_0_1, label, scores = analyze_sentiment_with_heuristic(text)
         # get the animal class from the submitted form
         animal_class = request.form.get("animal_class")
         n_animals = request.form.get("n_animals")
-        if label == "positive":
-            # generate the story
+        if label == SentimentEnum.positive.value:
+            # yes
             text = utils.generate_story(n_animals, animal_class)
-        elif label == "negative":
+        elif label == SentimentEnum.negative.value:
+            # no
             text = "I am sorry for the mistake. Let's try it again!"
         else:
+            # inconclusive
             text = "I'm having trouble understanding your response."
         return render_template("transcription.html", text=text, label=label)
 
