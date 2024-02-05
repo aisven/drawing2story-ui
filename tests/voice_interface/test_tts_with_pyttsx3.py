@@ -12,12 +12,12 @@ global_driver_name = "nsss"
 # global_driver_name = "espeak"
 
 
-@pytest.mark.skip("skipped test")
 def test_say_text_with_pyttsx3_on_macos():
-    text = "hello"
+    text = "I'll be back."
     say_text_with_pyttsx3(text=text, driver_name=global_driver_name, debug=True)
 
 
+@pytest.mark.skip("skipped test")
 def test_try_anna_with_pyttsx3_on_macos():
     try_anna_with_pyttsx3(driver_name=global_driver_name, debug=True)
 
